@@ -70,7 +70,7 @@ resource "aws_codepipeline" "cicd_pipeline" {
             output_artifacts = ["tf-code"]
             configuration = {
                 FullRepositoryId = "davoclock/aws-cicd-pipeline"
-                BranchName   = "main"
+                BranchName   = "master"
                 ConnectionArn = var.codestar_connector_credentials
                 OutputArtifactFormat = "CODE_ZIP"
             }
