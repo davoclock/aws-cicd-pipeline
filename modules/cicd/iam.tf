@@ -1,5 +1,5 @@
-resource "aws_iam_role" "tf-codepipeline-role" {
-  name = "tf-codepipeline-role"
+resource "aws_iam_role" "tf_codepipeline_role" {
+  name = var.tf_codepipeline_role
 
   assume_role_policy = <<EOF
 {
@@ -19,7 +19,7 @@ EOF
 
 }
 
-data "aws_iam_policy_document" "tf-cicd-pipeline-policies" {
+data "aws_iam_policy_document" "tf_cicd_pipeline_policies" {
     statement{
         sid = ""
         actions = ["codestar-connections:UseConnection"]
@@ -34,21 +34,21 @@ data "aws_iam_policy_document" "tf-cicd-pipeline-policies" {
     }
 }
 
-resource "aws_iam_policy" "tf-cicd-pipeline-policy" {
-    name = "tf-cicd-pipeline-policy"
+resource "aws_iam_policy" "tf_cicd_pipeline_policy" {
+    name = var.tf_pipeline_policy
     path = "/"
     description = "Pipeline policy"
-    policy = data.aws_iam_policy_document.tf-cicd-pipeline-policies.json
+    policy = data.aws_iam_policy_document.tf_cicd_pipeline_policies.json
 }
 
 resource "aws_iam_role_policy_attachment" "tf-cicd-pipeline-attachment" {
-    policy_arn = aws_iam_policy.tf-cicd-pipeline-policy.arn
-    role = aws_iam_role.tf-codepipeline-role.id
+    policy_arn = aws_iam_policy.tf_cicd_pipeline_policy.arn
+    role = aws_iam_role.tf_codepipeline_role.id
 }
 
 
-resource "aws_iam_role" "tf-codebuild-role" {
-  name = "tf-codebuild-role"
+resource "aws_iam_role" "tf_codebuild_role" {
+  name = var.tf_codebuild_role
 
   assume_role_policy = <<EOF
 {
@@ -68,7 +68,7 @@ EOF
 
 }
 
-data "aws_iam_policy_document" "tf-cicd-build-policies" {
+data "aws_iam_policy_document" "tf_cicd_build_policies" {
     statement{
         sid = ""
         actions = ["logs:*", "s3:*", "codebuild:*", "secretsmanager:*","iam:*"]
@@ -77,19 +77,19 @@ data "aws_iam_policy_document" "tf-cicd-build-policies" {
     }
 }
 
-resource "aws_iam_policy" "tf-cicd-build-policy" {
-    name = "tf-cicd-build-policy"
+resource "aws_iam_policy" "tf_cicd_build_policy" {
+    name = var.tf_codebuild_policy
     path = "/"
     description = "Codebuild policy"
-    policy = data.aws_iam_policy_document.tf-cicd-build-policies.json
+    policy = data.aws_iam_policy_document.tf_cicd_build_policies.json
 }
 
-resource "aws_iam_role_policy_attachment" "tf-cicd-codebuild-attachment1" {
-    policy_arn  = aws_iam_policy.tf-cicd-build-policy.arn
-    role        = aws_iam_role.tf-codebuild-role.id
+resource "aws_iam_role_policy_attachment" "tf_cicd_codebuild_attachment1" {
+    policy_arn  = aws_iam_policy.tf_cicd_build_policy.arn
+    role        = aws_iam_role.tf_codebuild_role.id
 }
 
-resource "aws_iam_role_policy_attachment" "tf-cicd-codebuild-attachment2" {
+resource "aws_iam_role_policy_attachment" "tf_cicd_codebuild_attachment2" {
     policy_arn  = "arn:aws:iam::aws:policy/PowerUserAccess"
-    role        = aws_iam_role.tf-codebuild-role.id
+    role        = aws_iam_role.tf_codebuild_role.id
 }

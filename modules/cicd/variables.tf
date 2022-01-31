@@ -8,11 +8,6 @@ variable "aws_region" {
     type        = string
 }
 
-variable "cicd_artefacts_bucket_name" {
-    description = "AWS S3 bucket name for CICD artefacts"
-    type        = string
-}
-
 variable "tf_state_bucket_name" {
     description = "AWS S3 bucket name for keeping TF state"
     type        = string
@@ -30,6 +25,9 @@ variable dockerhub_credentials{
 variable codestar_connector_credentials {
     type = string
 }
+
+
+
 
 variable "tf_codepipeline_role" {
     description = "AWS Codepipeline IAM role name"
@@ -50,3 +48,9 @@ variable "tf_codebuild_policy" {
     description = "AWS Codebuild policy name"
     type        = string
 }
+
+variable "cicd_artefacts_bucket_name" {
+    description = "AWS S3 bucket name for CICD artefacts"
+    type        = string
+}
+

@@ -1,4 +1,4 @@
 resource "aws_s3_bucket" "codepipeline_artifacts" {
-  bucket = "pipeline-artifacts-davo"
+  bucket = var.cicd_artefacts_bucket_name
   acl    = "private"
 } 
