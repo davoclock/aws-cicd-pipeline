@@ -1,5 +1,9 @@
 include env.mk
-include check.mk
+
+check-environment-variables:
+ifndef ENVIRONMENT
+	$(error ENVIRONMENT is undefined)
+endif
 
 init: check-environment-variables
 	$(TF) -chdir=./envs/${ENVIRONMENT} init -reconfigure -upgrade=${TF_UPGRADE}
