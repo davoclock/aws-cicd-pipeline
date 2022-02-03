@@ -7,8 +7,8 @@ phases:
       - export ENVIRONMENT="dev"
       - export TF_UPGRADE="false"
       - chmod +x ./tf.sh
-      - ./tf.sh init
+      - ./tf.sh 'init'
 
   build:
     commands:
-      - ./tf.sh create
+      - ./tf.sh 'create'
