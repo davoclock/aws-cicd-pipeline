@@ -16,7 +16,6 @@ resource "aws_iam_role" "tf_codepipeline_role" {
   ]
 }
 EOF
-
 }
 
 data "aws_iam_policy_document" "tf_cicd_pipeline_policies" {
@@ -84,23 +83,13 @@ resource "aws_iam_policy" "tf_cicd_build_policy" {
   policy      = data.aws_iam_policy_document.tf_cicd_build_policies.json
 }
 
-resource "aws_iam_role_policy_attachment" "tf_cicd_codebuild_attachment1" {
-  policy_arn = aws_iam_policy.tf_cicd_build_policy.arn
-  role       = aws_iam_role.tf_codebuild_role.id
-}
-
-resource "aws_iam_role_policy_attachment" "tf_cicd_codebuild_attachment2" {
-  policy_arn = "arn:aws:iam::aws:policy/PowerUserAccess"
-  role       = aws_iam_role.tf_codebuild_role.id
-}
-
 resource "aws_codebuild_project" "tf_plan" {
   name         = "tf-cicd-plan"
   description  = "Plan stage for terraform"
   service_role = aws_iam_role.tf_codebuild_role.arn
 
   artifacts {
-    type = "NO_ARTIFACTS"
+    type = "CODEPIPELINE"
   }
 
   environment {
@@ -114,7 +103,7 @@ resource "aws_codebuild_project" "tf_plan" {
     }
   }
   source {
-    type      = "NO_SOURCE"
+    type      = "CODEPIPELINE"
     buildspec = file("../../buildspec/plan-buildspec.yml")
   }
 
@@ -129,7 +118,7 @@ resource "aws_codebuild_project" "tf-apply" {
   service_role = aws_iam_role.tf_codebuild_role.arn
 
   artifacts {
-    type = "NO_ARTIFACTS"
+    type = "CODEPIPELINE"
   }
 
   environment {
@@ -143,7 +132,7 @@ resource "aws_codebuild_project" "tf-apply" {
     }
   }
   source {
-    type      = "NO_SOURCE"
+    type      = "CODEPIPELINE"
     buildspec = file("../../buildspec/apply-buildspec.yml")
   }
 
