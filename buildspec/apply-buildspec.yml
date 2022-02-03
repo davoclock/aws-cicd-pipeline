@@ -1,6 +1,4 @@
 version: 0.2
-env:
-  shell: bash
 phases:
   pre_build:
     commands:
@@ -14,7 +12,6 @@ phases:
       - TF_VAR_environment=$ENVIRONMENT
       - chmod +x ./tf.sh
       - ./tf.sh init
-
   build:
     commands:
       - ./tf.sh create
