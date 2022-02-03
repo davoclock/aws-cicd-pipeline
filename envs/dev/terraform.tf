@@ -1,11 +1,11 @@
 terraform {
   required_version = "~> 1.0"
-
   backend "s3" {
     encrypt        = true
-    bucket         = var.tf_state_bucket_name
-    key            = var.tf_state_bucket_key
-    dynamodb_table = var.tf_state_dynamodb_table
-    region         = var.aws_region
+    bucket         = "s6-engineering-paul-demo-tfstate"
+    key            = "terraform.tfstate"
+    dynamodb_table = "s6-engineering-paul-demo--dynamodb-tfstate"
+    region         = "ap-southeast-2"
+    role_arn       = "arn:aws:iam::084661862211:role/OrganizationAccountAccessRole"
   }
 }

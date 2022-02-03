@@ -1,25 +1,17 @@
-variable "aws_profile" {
-  description = "AWS profile"
-  type        = string
+variable "application_name" {
+  type = string
+}
+
+variable "environment" {
+  type = string
+}
+
+variable "tags" {
+  type = string
 }
 
 variable "aws_region" {
   description = "AWS region"
-  type        = string
-}
-
-variable "tf_state_bucket_name" {
-  description = "AWS S3 bucket name for keeping TF state"
-  type        = string
-}
-
-variable "tf_state_bucket_key" {
-  description = "AWS S3 bucket key for keeping TF state"
-  type        = string
-}
-
-variable "tf_state_dynamodb_table" {
-  description = "AWS DynamoDB table for keeping TF state"
   type        = string
 }
 
@@ -31,7 +23,7 @@ variable "codestar_connector_credentials" {
   type = string
 }
 
-variable "git-repo-id" {
+variable "git_repo_id" {
   description = "Full Github repository id"
   type        = string
 }

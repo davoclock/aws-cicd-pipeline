@@ -1,8 +1,9 @@
-APPLICATION_NAME ?= paul_devops_demo_cicd
-COST_GROUP ?= demo_cidd
+APPLICATION_NAME ?= paul-devops-demo-cicd
+COST_GROUP ?= demo-cicd
 
 TF_UPGRADE ?= false
 TF_ARGS =	-var="application_name=${APPLICATION_NAME}" \
 			-var="environment=${ENVIRONMENT}" \
-			-var='tags={"costgroup":"${COST_GROUP}"}'
-TF = TF_DATA_DIR=./envs/${ENVIRONMENT}/.terraform AWS_SDK_LOAD_CONFIG=true terraform
+			-var='tags={"costgroup":"${COST_GROUP}"}' \
+#			-target='module.cicd'
+TF = AWS_SDK_LOAD_CONFIG=true terraform

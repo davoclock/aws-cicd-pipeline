@@ -2,21 +2,21 @@ include env.mk
 include check.mk
 
 init: check-environment-variables
-	$(TF) init -reconfigure -upgrade=${TF_UPGRADE} ./envs/${ENVIRONMENT}
+	$(TF) -chdir=./envs/${ENVIRONMENT} init -reconfigure -upgrade=${TF_UPGRADE}
 
 check: init
-	$(TF) plan ${TF_ARGS} ./envs/${ENVIRONMENT}
+	$(TF) -chdir=./envs/${ENVIRONMENT} plan ${TF_ARGS}
 
 create: init
-	$(TF) apply ${TF_ARGS} ./envs/${ENVIRONMENT}
+	$(TF) -chdir=./envs/${ENVIRONMENT} apply ${TF_ARGS}
 
 update: create
 
 delete: init
-	$(TF) destroy ${TF_ARGS} ./envs/${ENVIRONMENT}
+	$(TF) -chdir=./envs/${ENVIRONMENT} destroy ${TF_ARGS}
 
 unlock: init
 ifndef LOCK_ID
 	$(error LOCK_ID must be provided)
 endif
-	$(TF) force-unlock ${LOCK_ID} ./envs/${ENVIRONMENT}
+	$(TF) -chdir=./envs/${ENVIRONMENT} force-unlock ${LOCK_ID}

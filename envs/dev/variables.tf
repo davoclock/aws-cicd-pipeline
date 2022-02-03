@@ -1,25 +1,24 @@
+variable "application_name" {
+  type = string
+}
+
+variable "environment" {
+  type = string
+}
+
+variable "tags" {
+  type = string
+}
+
 variable "aws_region" {
   description = "AWS region"
   type        = string
   default     = "ap-southeast-2"
 }
 
-variable "tf_state_bucket_name" {
-  description = "AWS S3 bucket name for keeping TF state"
-  type        = string
-  default     = "s6-engineering-paul-demo-tfstate"
-}
-
-variable "tf_state_bucket_key" {
-  description = "AWS S3 bucket key for keeping TF state"
-  type        = string
-  default     = "terraform.tfstate"
-}
-
-variable "tf_state_dynamodb_table" {
-  description = "AWS DynamoDB table for keeping TF state"
-  type        = string
-  default     = "s6-engineering-paul-demo--dynamodb-tfstate"
+variable "env_role_arn" {
+  type    = string
+  default = "arn:aws:iam::084661862211:role/OrganizationAccountAccessRole"
 }
 
 variable "tf_codepipeline_role" {
@@ -55,7 +54,7 @@ variable "codestar_connector_credentials" {
   default = "arn:aws:codestar-connections:ap-southeast-2:084661862211:connection/bee1c39b-cc20-462f-b6b8-dd14ee644305"
 }
 
-variable "git-repo-id" {
+variable "git_repo_id" {
   type    = string
   default = "pfilippov/aws-cicd-pipeline"
 }
@@ -63,5 +62,5 @@ variable "git-repo-id" {
 variable "cicd_artefacts_bucket_name" {
   description = "AWS S3 bucket name for CICD artefacts"
   type        = string
-  default     = "s6-engineering-paul-demo-artifacts"
+  default     = "s6-engineering-paul-demo-code-pipeline-artifacts"
 }
