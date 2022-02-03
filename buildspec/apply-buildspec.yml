@@ -2,6 +2,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
+      - sudo yum install make
       - export AWS_DEFAULT_REGION="ap-southeast-2"
       - export AWS_PROFILE="section6-sandbox"
       - export ENVIRONMENT="dev"
