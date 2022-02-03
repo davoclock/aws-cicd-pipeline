@@ -83,6 +83,16 @@ resource "aws_iam_policy" "tf_cicd_build_policy" {
   policy      = data.aws_iam_policy_document.tf_cicd_build_policies.json
 }
 
+resource "aws_iam_role_policy_attachment" "tf_cicd_codebuild_attachment1" {
+  policy_arn = aws_iam_policy.tf_cicd_build_policy.arn
+  role       = aws_iam_role.tf_codebuild_role.id
+}
+
+resource "aws_iam_role_policy_attachment" "tf_cicd_codebuild_attachment2" {
+  policy_arn = "arn:aws:iam::aws:policy/PowerUserAccess"
+  role       = aws_iam_role.tf_codebuild_role.id
+}
+
 resource "aws_codebuild_project" "tf_plan" {
   name         = "tf-cicd-plan"
   description  = "Plan stage for terraform"
