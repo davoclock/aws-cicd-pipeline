@@ -100,7 +100,7 @@ resource "aws_codebuild_project" "tf_plan" {
   service_role = aws_iam_role.tf_codebuild_role.arn
 
   artifacts {
-    type = "CODEPIPELINE"
+    type = "NO_ARTIFACTS"
   }
 
   environment {
@@ -129,7 +129,7 @@ resource "aws_codebuild_project" "tf-apply" {
   service_role = aws_iam_role.tf_codebuild_role.arn
 
   artifacts {
-    type = "CODEPIPELINE"
+    type = "NO_ARTIFACTS"
   }
 
   environment {

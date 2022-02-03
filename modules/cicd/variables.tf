@@ -7,7 +7,9 @@ variable "environment" {
 }
 
 variable "tags" {
-  type = string
+  type = object({
+    costgroup = string
+  })
 }
 
 variable "aws_region" {
