@@ -10,6 +10,10 @@ variable "tags" {
   type = string
 }
 
+variable "env_role_arn" {
+  type = string
+}
+
 variable "aws_region" {
   description = "AWS region"
   type        = string
