@@ -22,25 +22,25 @@ then
     exit 1
 fi
 
-APPLICATION_NAME=paul-devops-demo-cicd
-COST_GROUP=demo-cicd
-TF_UPGRADE=false
+#export TF_VAR_environment=$ENVIRONMENT
+#export TF_UPGRADE="false"
+#export TF_VAR_application_name="paul-devops-demo-cicd"
+#export TF_VAR_tags='{"costgroup":"demo-cicd"}'
 
-TF_ARGS="-var=\"application_name=${APPLICATION_NAME}\" -var=\"environment=${ENVIRONMENT}\" -var=\"tags={\"costgroup\":\"${COST_GROUP}\"}"
-TF="AWS_SDK_LOAD_CONFIG=true terraform"
+TF="terraform"
 
 if [ "$1" = "init" ]
 then
-  ${TF} -chdir=./envs/"${ENVIRONMENT}" init -reconfigure -upgrade=$TF_UPGRADE
+  ${TF} -chdir=./envs/"${ENVIRONMENT}" init -reconfigure -upgrade=${TF_UPGRADE}
 elif [ "$1" = "check" ]
 then
-  ${TF} -chdir=./envs/"${ENVIRONMENT}" plan "${TF_ARGS}"
+  ${TF} -chdir=./envs/"${ENVIRONMENT}" plan
 elif [ "$1" = "create" ]
 then
-  $(TF) -chdir=./envs/"${ENVIRONMENT}" apply "${TF_ARGS}"
+  $(TF) -chdir=./envs/"${ENVIRONMENT}" apply
 elif [ "$1" = "delete" ]
 then
-  $(TF) -chdir=./envs/"${ENVIRONMENT}" destroy "${TF_ARGS}"
+  $(TF) -chdir=./envs/"${ENVIRONMENT}" destroy
 elif [ "$1" = "unlock" ]
 then
   if [ -z "$LOCK_ID" ]
