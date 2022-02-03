@@ -117,6 +117,10 @@ resource "aws_codebuild_project" "tf_plan" {
     type      = "CODEPIPELINE"
     buildspec = file("../../buildspec/plan-buildspec.yml")
   }
+
+  tags = merge({
+    env = var.environment
+  }, var.tags)
 }
 
 resource "aws_codebuild_project" "tf-apply" {
@@ -142,6 +146,10 @@ resource "aws_codebuild_project" "tf-apply" {
     type      = "CODEPIPELINE"
     buildspec = file("../../buildspec/apply-buildspec.yml")
   }
+
+  tags = merge({
+    env = var.environment
+  }, var.tags)
 }
 
 
@@ -202,6 +210,10 @@ resource "aws_codepipeline" "cicd_pipeline" {
       }
     }
   }
+
+  tags = merge({
+    env = var.environment
+  }, var.tags)
 }
 
 resource "aws_s3_bucket" "codepipeline_artifacts" {
