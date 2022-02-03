@@ -6,6 +6,7 @@ phases:
       - export AWS_PROFILE="section6-sandbox"
       - export ENVIRONMENT="dev"
       - export TF_UPGRADE="false"
+      - chmod +x ./tf.sh
       - ./tf.sh init
 
   build:
