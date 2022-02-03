@@ -114,7 +114,7 @@ resource "aws_codebuild_project" "tf_plan" {
     }
   }
   source {
-    type      = "CODEPIPELINE"
+    type      = "NO_SOURCE"
     buildspec = file("../../buildspec/plan-buildspec.yml")
   }
 
@@ -143,7 +143,7 @@ resource "aws_codebuild_project" "tf-apply" {
     }
   }
   source {
-    type      = "CODEPIPELINE"
+    type      = "NO_SOURCE"
     buildspec = file("../../buildspec/apply-buildspec.yml")
   }
 
