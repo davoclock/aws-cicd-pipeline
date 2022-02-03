@@ -10,4 +10,4 @@ phases:
 
   build:
     commands:
-      - make create
+      - ./tf.sh create

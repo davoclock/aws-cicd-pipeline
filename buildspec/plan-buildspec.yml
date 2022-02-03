@@ -2,14 +2,12 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo "$(cat /etc/issue)"
-      - apt install build-essential -y --no-install-recommends
       - export AWS_DEFAULT_REGION="ap-southeast-2"
       - export AWS_PROFILE="section6-sandbox"
       - export ENVIRONMENT="dev"
       - export TF_UPGRADE="false"
-      - make init
+      - ./tf.sh init
 
   build:
     commands:
-      - make check
+      - ./tf.sh check
