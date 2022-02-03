@@ -2,8 +2,6 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - export AWS_DEFAULT_REGION="ap-southeast-2"
-      - export AWS_PROFILE="section6-sandbox"
       - export AWS_SDK_LOAD_CONFIG="true"
       - export ENVIRONMENT="dev"
       - export TF_UPGRADE="false"
