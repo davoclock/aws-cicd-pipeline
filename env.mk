@@ -5,5 +5,5 @@ TF_UPGRADE ?= false
 TF_ARGS =	-var="application_name=${APPLICATION_NAME}" \
 			-var="environment=${ENVIRONMENT}" \
 			-var='tags={"costgroup":"${COST_GROUP}"}' \
-			-target='module.cicd'
+#			-target='module.cicd'
 TF = AWS_SDK_LOAD_CONFIG=true terraform
