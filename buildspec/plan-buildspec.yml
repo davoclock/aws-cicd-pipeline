@@ -3,6 +3,7 @@ phases:
   pre_build:
     commands:
       - echo "$(ls -la)"
+      - echo "$(cat env.mk)"
       - export AWS_DEFAULT_REGION="ap-southeast-2"
       - export AWS_PROFILE="section6-sandbox"
       - export ENVIRONMENT="dev"
