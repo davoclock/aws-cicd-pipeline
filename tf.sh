@@ -22,10 +22,10 @@ then
     exit 1
 fi
 
-export TF_VAR_environment=$ENVIRONMENT
-export TF_UPGRADE="false"
-export TF_VAR_application_name="paul-devops-demo-cicd"
-export TF_VAR_tags='{"costgroup":"demo-cicd"}'
+#export TF_VAR_environment=$ENVIRONMENT
+#export TF_UPGRADE="false"
+#export TF_VAR_application_name="paul-devops-demo-cicd"
+#export TF_VAR_tags='{"costgroup":"demo-cicd"}'
 
 TF="terraform"
 
