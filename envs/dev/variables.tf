@@ -16,11 +16,6 @@ variable "aws_region" {
   default     = "ap-southeast-2"
 }
 
-variable "env_role_arn" {
-  type    = string
-  default = "arn:aws:iam::084661862211:role/OrganizationAccountAccessRole"
-}
-
 variable "tf_codepipeline_role" {
   description = "AWS Codepipeline IAM role name"
   type        = string

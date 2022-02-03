@@ -1,7 +1,6 @@
 module "cicd" {
   source = "../../modules/cicd"
 
-  env_role_arn                   = var.env_role_arn
   aws_region                     = var.aws_region
   git_repo_id                    = var.git_repo_id
   tf_codepipeline_policy         = var.tf_codepipeline_policy
