@@ -7,11 +7,11 @@ phases:
       - export AWS_SDK_LOAD_CONFIG="true"
       - export ENVIRONMENT="dev"
       - export TF_UPGRADE="false"
-      - TF_VAR_application_name="paul-devops-demo-cicd"
-      - TF_VAR_tags='{"costgroup":"demo-cicd"}'
-      - TF_VAR_environment=$ENVIRONMENT
+      - export TF_VAR_application_name="paul-devops-demo-cicd"
+      - export TF_VAR_tags='{"costgroup":"demo-cicd"}'
+      - export TF_VAR_environment=$ENVIRONMENT
       - chmod +x ./tf.sh
-      - ./tf.sh
+      - /bin/bash ./tf.sh init
   build:
     commands:
-      - ./tf.sh check
+      - /bin/bash ./tf.sh check
