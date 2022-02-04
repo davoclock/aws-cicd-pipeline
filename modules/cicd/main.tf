@@ -114,7 +114,7 @@ resource "aws_codebuild_project" "tf_plan" {
   }
   source {
     type      = "CODEPIPELINE"
-    buildspec = file("../../buildspec/plan-buildspec.yml")
+    buildspec = file("../../envs/${var.environment}/buildspec/plan-buildspec.yml")
   }
 
   tags = merge({
@@ -143,7 +143,7 @@ resource "aws_codebuild_project" "tf-apply" {
   }
   source {
     type      = "CODEPIPELINE"
-    buildspec = file("../../buildspec/apply-buildspec.yml")
+    buildspec = file("../../envs/${var.environment}/buildspec/plan-buildspec.yml")
   }
 
   tags = merge({
