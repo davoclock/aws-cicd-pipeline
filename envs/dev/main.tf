@@ -18,8 +18,8 @@ module "cicd" {
 module "infrastructure" {
   source = "../../modules/infrastructure"
 
-  aws_region                     = var.aws_region
-  application_name               = var.application_name
-  environment                    = var.environment
-  tags                           = var.tags
+  aws_region       = var.aws_region
+  application_name = var.application_name
+  environment      = var.environment
+  tags             = var.tags
 }
