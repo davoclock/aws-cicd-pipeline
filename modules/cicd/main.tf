@@ -143,7 +143,7 @@ resource "aws_codebuild_project" "tf-apply" {
   }
   source {
     type      = "CODEPIPELINE"
-    buildspec = file("../../envs/${var.environment}/buildspec/plan-buildspec.yml")
+    buildspec = file("../../envs/${var.environment}/buildspec/apply-buildspec.yml")
   }
 
   tags = merge({
