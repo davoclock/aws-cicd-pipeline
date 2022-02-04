@@ -12,6 +12,7 @@ phases:
       - chmod +x ./tf.sh
       - echo "$(which bash)"
       - echo "$(pwd)"
+      - . ./tf.sh init
   build:
     commands:
       - . ./tf.sh create
