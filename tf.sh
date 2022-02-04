@@ -23,10 +23,10 @@ then
   ${TF} -chdir=./envs/"${ENVIRONMENT}" plan
 elif [ "$1" = "create" ]
 then
-  ${TF} -chdir=./envs/"${ENVIRONMENT}" apply
+  ${TF} -chdir=./envs/"${ENVIRONMENT}" apply --auto-approve
 elif [ "$1" = "delete" ]
 then
-  ${TF} -chdir=./envs/"${ENVIRONMENT}" destroy
+  ${TF} -chdir=./envs/"${ENVIRONMENT}" destroy --auto-approve
 elif [ "$1" = "unlock" ]
 then
   if [ -z "$LOCK_ID" ]
