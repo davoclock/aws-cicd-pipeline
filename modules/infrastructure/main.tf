@@ -2,7 +2,8 @@ resource "aws_vpc" "default" {
   cidr_block = "1.2.0.0/16"
 
   tags = merge({
-    env  = var.environment
-    Name = var.application_name
+    application-name = var.application_name
+    env              = var.environment
+    Name = "${var.environment}-${var.application_name}"
   }, var.tags)
 }
