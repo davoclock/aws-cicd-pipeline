@@ -10,10 +10,10 @@ phases:
       - export TF_VAR_application_name="paul-devops-demo-cicd"
       - export TF_VAR_tags='{"costgroup":"demo-cicd"}'
       - export TF_VAR_environment=$ENVIRONMENT
-      - echo "$(ls -la)"
       - chmod +x ./tf.sh
-      - echo "$(ls -la)"
-      - ./tf.sh init
+      - echo "$(which bash)"
+      - echo "$(pwd)"
+      - . ./tf.sh init
   build:
     commands:
-      - ./tf.sh check
+      - . ./tf.sh check

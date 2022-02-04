@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 ## to execute this script run first: $ chmod +x tf.sh
 ## then ./tf.sh init
 
