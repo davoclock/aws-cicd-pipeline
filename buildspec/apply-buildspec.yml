@@ -11,7 +11,7 @@ phases:
       - export TF_VAR_tags='{"costgroup":"demo-cicd"}'
       - export TF_VAR_environment=$ENVIRONMENT
       - chmod +x ./tf.sh
-      - /bin/bash ./tf.sh init
+      - ./tf.sh init
   build:
     commands:
-      - /bin/bash ./tf.sh create
+      - ./tf.sh create
