@@ -1,21 +1,17 @@
 version: 0.2
-env:
-  shell: bash
-  variables:
-    AWS_DEFAULT_REGION: ap-southeast-2
-    AWS_PROFILE: section6-sandbox
-    AWS_SDK_LOAD_CONFIG: true
-    ENVIRONMENT: dev
-    TF_UPGRADE: false
-    TF_VAR_application_name: paul-devops-demo-cicd
 phases:
   pre_build:
     commands:
+      - export AWS_DEFAULT_REGION="ap-southeast-2"
+      - export AWS_PROFILE="section6-sandbox"
+      - export AWS_SDK_LOAD_CONFIG="true"
+      - export ENVIRONMENT="dev"
+      - export TF_UPGRADE="false"
+      - TF_VAR_application_name="paul-devops-demo-cicd"
       - TF_VAR_tags='{"costgroup":"demo-cicd"}'
       - TF_VAR_environment=$ENVIRONMENT
       - chmod +x ./tf.sh
-      - ./tf.sh init
-
+      - ./tf.sh
   build:
     commands:
       - ./tf.sh check
