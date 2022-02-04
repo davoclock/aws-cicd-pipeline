@@ -6,6 +6,5 @@ terraform {
     key            = "terraform.tfstate"
     dynamodb_table = "s6-engineering-paul-demo--dynamodb-tfstate"
     region         = "ap-southeast-2"
-    role_arn       = "arn:aws:iam::084661862211:role/OrganizationAccountAccessRole"
   }
 }

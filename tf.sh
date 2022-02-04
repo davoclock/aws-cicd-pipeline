@@ -1,8 +1,4 @@
 #!/bin/bash
-set -x
-## to execute this script run first: $ chmod +x tf.sh
-## then ./tf.sh init
-
 # make sure that all mandatory parameters are set
 if [ -z "$AWS_PROFILE" ]
 then
@@ -21,11 +17,6 @@ then
     echo "ENVIRONMENT is not defined. Please execute first: $ export ENVIRONMENT=dev"
     exit 1
 fi
-
-#export TF_VAR_environment=$ENVIRONMENT
-#export TF_UPGRADE="false"
-#export TF_VAR_application_name="paul-devops-demo-cicd"
-#export TF_VAR_tags='{"costgroup":"demo-cicd"}'
 
 TF="terraform"
 
